@@ -1,0 +1,110 @@
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://di3mtk41gj5ie"]
+
+[ext_resource type="FontFile" uid="uid://dcfb6a0jxdi5j" path="res://assets/fonts/aileron/Aileron-SemiBold.otf" id="1_tk5uy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2kylv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4kfy"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0.14902)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.756863, 0.360784, 0.101961, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_waskt"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs5ma"]
+bg_color = Color(0.756863, 0.360784, 0.101961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kg2eh"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.756863, 0.360784, 0.101961, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oysqa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_12n1d"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bm0f"]
+bg_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85333"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 1
+border_width_bottom = 2
+border_color = Color(0.756863, 0.360784, 0.101961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fn65m"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.756863, 0.360784, 0.101961, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8xv6"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0, 0, 0, 0.6)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color(0.175, 0.175, 0.175, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("1_tk5uy")
+default_font_size = 20
+Button/colors/font_color = Color(0.756863, 0.360784, 0.101961, 1)
+Button/colors/font_focus_color = Color(0.756863, 0.360784, 0.101961, 1)
+Button/colors/font_hover_color = Color(0.756863, 0.360784, 0.101961, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_2kylv")
+Button/styles/hover = SubResource("StyleBoxFlat_c4kfy")
+Button/styles/normal = SubResource("StyleBoxEmpty_waskt")
+Button/styles/pressed = SubResource("StyleBoxFlat_bs5ma")
+Label/colors/font_color = Color(0.756863, 0.360784, 0.101961, 1)
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+OptionButton/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+OptionButton/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+OptionButton/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+OptionButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+OptionButton/styles/focus = SubResource("StyleBoxEmpty_2kylv")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_kg2eh")
+OptionButton/styles/normal = SubResource("StyleBoxEmpty_oysqa")
+OptionButton/styles/pressed = SubResource("StyleBoxEmpty_12n1d")
+PopupMenu/colors/font_color = Color(0.756863, 0.360784, 0.101961, 1)
+PopupMenu/colors/font_hover_color = Color(0.756863, 0.360784, 0.101961, 1)
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_kg2eh")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_6bm0f")
+TabContainer/colors/font_selected_color = Color(0, 0, 0, 1)
+TabContainer/colors/font_unselected_color = Color(0.756863, 0.360784, 0.101961, 1)
+TabContainer/font_sizes/font_size = 46
+TabContainer/styles/panel = SubResource("StyleBoxFlat_85333")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_fn65m")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_f8xv6")

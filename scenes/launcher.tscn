@@ -1,0 +1,201 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdqfui8j7oi7p"]
+
+[ext_resource type="Theme" uid="uid://22f3qdjpo4ma" path="res://assets/launcher_theme.tres" id="1_povdn"]
+[ext_resource type="Script" path="res://scenes/launcher.gd" id="2_wme2o"]
+[ext_resource type="Theme" uid="uid://di3mtk41gj5ie" path="res://assets/header_theme.tres" id="3_7ism0"]
+[ext_resource type="Script" path="res://scenes/games_updater.gd" id="3_whcko"]
+[ext_resource type="Script" path="res://scenes/minimise_button.gd" id="4_28n08"]
+[ext_resource type="Script" path="res://games_manager.gd" id="4_236mi"]
+[ext_resource type="PackedScene" uid="uid://c7b7vk7visvsf" path="res://scenes/subscenes/quit_button.tscn" id="5_2rbdm"]
+[ext_resource type="Script" path="res://scenes/launcher_body.gd" id="6_0yfvg"]
+[ext_resource type="Texture2D" uid="uid://cu01tyygyxkck" path="res://assets/question_mark.png" id="8_acmhh"]
+
+[node name="Launcher" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_povdn")
+script = ExtResource("2_wme2o")
+
+[node name="GamesUpdater" type="Node" parent="."]
+script = ExtResource("3_whcko")
+
+[node name="GamesManager" type="Node" parent="GamesUpdater"]
+script = ExtResource("4_236mi")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.454902)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="NiceLineAtTop" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.756863, 0.360784, 0.101961, 1)
+
+[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_7ism0")
+
+[node name="DraggableHeader" type="MarginContainer" parent="VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/Header/DraggableHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Masria Games Launcher"
+
+[node name="MinimiseButton" type="Button" parent="VBoxContainer/Header"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "_"
+script = ExtResource("4_28n08")
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/Header"]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" parent="VBoxContainer/Header" instance=ExtResource("5_2rbdm")]
+layout_mode = 2
+
+[node name="HeaderSeparation" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0.756863, 0.360784, 0.101961, 1)
+
+[node name="BodyMargin" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="WhatIsGoingOnLabel" type="Label" parent="VBoxContainer/BodyMargin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Looking for game updates..."
+horizontal_alignment = 1
+
+[node name="LauncherBody" type="VBoxContainer" parent="VBoxContainer/BodyMargin"]
+visible = false
+layout_mode = 2
+script = ExtResource("6_0yfvg")
+
+[node name="GameSelectButton" type="OptionButton" parent="VBoxContainer/BodyMargin/LauncherBody"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HeaderSeparation" type="ColorRect" parent="VBoxContainer/BodyMargin/LauncherBody"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="GameBody" type="MarginContainer" parent="VBoxContainer/BodyMargin/LauncherBody"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="XCOM-style Roguelike" type="HBoxContainer" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="LeftSide" type="VBoxContainer" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("8_acmhh")
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.14902)
+
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SmallButtons" type="HBoxContainer" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide/Buttons"]
+layout_mode = 2
+
+[node name="GameSettingsButton" type="Button" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide/Buttons/SmallButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Game Settings"
+
+[node name="UninstallButton" type="Button" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide/Buttons/SmallButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Uninstall"
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide/Buttons"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="RightSide" type="VBoxContainer" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Desription" type="Label" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/RightSide"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "This is a game that is still a work in progress and not ready for play-testing yet.
+
+The title pretty much says everything: It will be a roguelike with a tactical combat system inspired by the XCOM games."
+autowrap_mode = 3
+
+[connection signal="game_installed" from="GamesUpdater" to="." method="_on_games_updater_game_installed"]
+[connection signal="game_uninstalled" from="GamesUpdater" to="." method="_on_games_updater_game_uninstalled"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[connection signal="gui_input" from="VBoxContainer/Header/DraggableHeader" to="." method="_on_draggable_header_gui_input"]
+[connection signal="pressed" from="VBoxContainer/Header/MinimiseButton" to="VBoxContainer/Header/MinimiseButton" method="_on_pressed"]
+[connection signal="item_selected" from="VBoxContainer/BodyMargin/LauncherBody/GameSelectButton" to="VBoxContainer/BodyMargin/LauncherBody" method="_on_game_select_button_item_selected"]

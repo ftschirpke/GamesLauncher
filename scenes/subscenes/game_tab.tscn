@@ -1,0 +1,174 @@
+[gd_scene load_steps=3 format=3 uid="uid://da051nkss4d50"]
+
+[ext_resource type="Script" path="res://scenes/subscenes/game_tab.gd" id="1_y0wo7"]
+[ext_resource type="Texture2D" uid="uid://cu01tyygyxkck" path="res://assets/question_mark.png" id="2_8jubg"]
+
+[node name="GameTab" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+script = ExtResource("1_y0wo7")
+
+[node name="LeftSide" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="LeftSide"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_8jubg")
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="LeftSide/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.117647)
+
+[node name="Buttons" type="VBoxContainer" parent="LeftSide"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SmallButtons" type="HBoxContainer" parent="LeftSide/Buttons"]
+layout_mode = 2
+
+[node name="GameSettingsButton" type="Button" parent="LeftSide/Buttons/SmallButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Game Settings"
+
+[node name="UpdateButton" type="Button" parent="LeftSide/Buttons/SmallButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Update"
+
+[node name="UninstallButton" type="Button" parent="LeftSide/Buttons/SmallButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Uninstall"
+
+[node name="PlayButton" type="Button" parent="LeftSide/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="InstallButton" type="Button" parent="LeftSide/Buttons"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Install"
+
+[node name="RightSide" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpperControl" type="VBoxContainer" parent="RightSide"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Description" type="Label" parent="RightSide/UpperControl"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Couldn't find a description for this game..."
+autowrap_mode = 3
+
+[node name="LowerControl" type="VBoxContainer" parent="RightSide"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 7
+
+[node name="ColorRect" type="ColorRect" parent="RightSide/LowerControl"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="VersionsBox" type="HBoxContainer" parent="RightSide/LowerControl"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RightSide/LowerControl/VersionsBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "Release Notes: "
+
+[node name="InstalledVersion" type="Label" parent="RightSide/LowerControl/VersionsBox"]
+layout_mode = 2
+text = "v0.10.12 (Installed)"
+
+[node name="ChooseVersionButton" type="CheckButton" parent="RightSide/LowerControl/VersionsBox"]
+layout_mode = 2
+button_pressed = true
+
+[node name="LatestVersion" type="Label" parent="RightSide/LowerControl/VersionsBox"]
+layout_mode = 2
+text = "v0.11.12 (Latest)"
+
+[node name="ColorRect2" type="ColorRect" parent="RightSide/LowerControl"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RightSide/LowerControl"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightSide/LowerControl/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ReleaseNotesHeader" type="Label" parent="RightSide/LowerControl/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Empty Release Notes"
+
+[node name="ColorRect" type="ColorRect" parent="RightSide/LowerControl/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.756863, 0.360784, 0.101961, 1)
+
+[node name="ReleaseNotes" type="Label" parent="RightSide/LowerControl/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "No release notes found"
+
+[node name="InstallationBarContainer" type="HBoxContainer" parent="RightSide"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="InstallationLabel" type="Label" parent="RightSide/InstallationBarContainer"]
+layout_mode = 2
+text = "Downloading..."
+
+[node name="InstallationProgressBar" type="ProgressBar" parent="RightSide/InstallationBarContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="CancelInstallationButton" type="Button" parent="RightSide/InstallationBarContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="pressed" from="LeftSide/Buttons/SmallButtons/UpdateButton" to="." method="_on_update_button_pressed"]
+[connection signal="pressed" from="LeftSide/Buttons/SmallButtons/UninstallButton" to="." method="_on_uninstall_button_pressed"]
+[connection signal="pressed" from="LeftSide/Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="LeftSide/Buttons/InstallButton" to="." method="_on_install_button_pressed"]
+[connection signal="toggled" from="RightSide/LowerControl/VersionsBox/ChooseVersionButton" to="." method="_set_show_latest_release_notes"]
+[connection signal="pressed" from="RightSide/InstallationBarContainer/CancelInstallationButton" to="." method="_on_cancel_installation_button_pressed"]

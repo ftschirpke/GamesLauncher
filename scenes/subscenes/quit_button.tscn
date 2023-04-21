@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7b7vk7visvsf"]
+
+[ext_resource type="Script" path="res://scenes/subscenes/quit_button.gd" id="1_hjrja"]
+
+[node name="QuitButton" type="Button"]
+custom_minimum_size = Vector2(60, 0)
+size_flags_stretch_ratio = 0.0
+text = "X"
+script = ExtResource("1_hjrja")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
