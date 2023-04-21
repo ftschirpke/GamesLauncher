@@ -1,2 +1,12 @@
 # Godot 4+ specific ignores
 .godot/
+**.import
+
+# export specific ignores
+**.cfg
+**.exe
+**.pck
+
+# ignore files for asset creation
+**.kra
+
