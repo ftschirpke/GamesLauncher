@@ -10,6 +10,8 @@ const launcher_scene_path: String = "res://scenes/launcher.tscn"
 const launcher_pck_path: String = "user://mg_launcher.pck"
 
 # VERSION
+const VERSION_DEFAULT: String = "v0.2.0"
+
 const version_file: String = "user://version.save"
 var release: String = ""
 var last_fetched_timestamp: float
@@ -44,7 +46,7 @@ func load_version() -> bool:
         var data: Dictionary = file.get_var()
         file.close()
     
-        release = data.get("release")
+        release = data.get("release", VERSION_DEFAULT)
         last_fetched_timestamp = data.get("last_fetched", 0)
             
     return file_found
@@ -62,13 +64,10 @@ func save_version() -> void:
 func _ready() -> void:
     var start_timestamp: float = Time.get_unix_time_from_system()
     var look_for_updates: bool = start_timestamp - last_fetched_timestamp >= TWENTY_MINUTES
-    look_for_updates = true # TODO - only testing
     if look_for_updates:
-        print("FETCHING LAUNCHER UPDATES")
         look_for_launcher_updates()
         last_fetched_timestamp = start_timestamp
     else:
-        print("SKIPPING LAUNCHER UPDATES")
         start_launcher()
 
 func make_http_request(function_on_completion: Callable, request_url: String) -> HTTPRequest:
@@ -108,7 +107,11 @@ func _on_launcher_update_request_completed(result: int, response_code: int, head
         return
     var last_release: Dictionary = json[0]
     
-    release = last_release.get("name", "")
+    var new_release: String = last_release.get("name", "")
+    if new_release == "" or new_release == release:
+        start_launcher()
+        return
+
     release_notes = last_release.get("body", "")
     
     var release_assets: Array = last_release.get("assets", [])
@@ -138,7 +141,6 @@ func _on_launcher_pck_downloaded(result: int, response_code: int, headers: Packe
 func start_launcher() -> void:
     if FileAccess.file_exists(launcher_pck_path):
         var successful = ProjectSettings.load_resource_pack(launcher_pck_path)
-        print("LOADED")
         if not successful:
             push_error("Failed to load the launcher update. Continuing with the base version...")
     scene_tree.change_scene_to_file(launcher_scene_path)
