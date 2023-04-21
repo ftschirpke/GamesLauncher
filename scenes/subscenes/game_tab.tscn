@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://da051nkss4d50"]
 
 [ext_resource type="Script" path="res://scenes/subscenes/game_tab.gd" id="1_y0wo7"]
-[ext_resource type="Texture2D" uid="uid://cu01tyygyxkck" path="res://assets/question_mark.png" id="2_8jubg"]
+[ext_resource type="Texture2D" uid="uid://cw5kgkero2bma" path="res://assets/question_mark.png" id="2_8jubg"]
 
 [node name="GameTab" type="HBoxContainer"]
 anchors_preset = 15

@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://games_manager.gd" id="4_236mi"]
 [ext_resource type="PackedScene" uid="uid://c7b7vk7visvsf" path="res://scenes/subscenes/quit_button.tscn" id="5_2rbdm"]
 [ext_resource type="Script" path="res://scenes/launcher_body.gd" id="6_0yfvg"]
-[ext_resource type="Texture2D" uid="uid://cu01tyygyxkck" path="res://assets/question_mark.png" id="8_acmhh"]
+[ext_resource type="Texture2D" uid="uid://cw5kgkero2bma" path="res://assets/question_mark.png" id="8_acmhh"]
 
 [node name="Launcher" type="Control"]
 layout_mode = 3
