@@ -124,6 +124,7 @@ func _on_launcher_update_request_completed(result: int, response_code: int, head
             break
 
 func download_launcher_pck(download_url: String) -> void:
+    label.text = "Downloading launcher updates..."
     if not FileAccess.file_exists(launcher_pck_path):
         var file: FileAccess = FileAccess.open(launcher_pck_path, FileAccess.WRITE)
         if not file:
@@ -133,6 +134,7 @@ func download_launcher_pck(download_url: String) -> void:
     download_file(download_url, launcher_pck_path, _on_launcher_pck_downloaded)
 
 func _on_launcher_pck_downloaded(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+    label.text = "Loading changes..."
     if result != HTTPRequest.RESULT_SUCCESS:
         push_error("HTTP Request to download file was not successful")
     save_version()
@@ -143,4 +145,5 @@ func start_launcher() -> void:
         var successful = ProjectSettings.load_resource_pack(launcher_pck_path)
         if not successful:
             push_error("Failed to load the launcher update. Continuing with the base version...")
+    label.text = "Launching..."
     scene_tree.change_scene_to_file(launcher_scene_path)
