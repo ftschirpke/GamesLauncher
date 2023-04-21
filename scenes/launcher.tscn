@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdqfui8j7oi7p"]
+[gd_scene load_steps=9 format=3 uid="uid://cdqfui8j7oi7p"]
 
 [ext_resource type="Theme" uid="uid://22f3qdjpo4ma" path="res://assets/launcher_theme.tres" id="1_povdn"]
 [ext_resource type="Script" path="res://scenes/launcher.gd" id="2_wme2o"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://games_manager.gd" id="4_236mi"]
 [ext_resource type="PackedScene" uid="uid://c7b7vk7visvsf" path="res://scenes/subscenes/quit_button.tscn" id="5_2rbdm"]
 [ext_resource type="Script" path="res://scenes/launcher_body.gd" id="6_0yfvg"]
-[ext_resource type="Texture2D" uid="uid://cw5kgkero2bma" path="res://assets/question_mark.png" id="8_acmhh"]
 
 [node name="Launcher" type="Control"]
 layout_mode = 3
@@ -124,74 +123,6 @@ layout_mode = 2
 [node name="GameBody" type="MarginContainer" parent="VBoxContainer/BodyMargin/LauncherBody"]
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="XCOM-style Roguelike" type="HBoxContainer" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 20
-
-[node name="LeftSide" type="VBoxContainer" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike"]
-custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 10
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide"]
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("8_acmhh")
-stretch_mode = 5
-
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide/TextureRect"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-color = Color(1, 1, 1, 0.14902)
-
-[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SmallButtons" type="HBoxContainer" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide/Buttons"]
-layout_mode = 2
-
-[node name="GameSettingsButton" type="Button" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide/Buttons/SmallButtons"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "Game Settings"
-
-[node name="UninstallButton" type="Button" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide/Buttons/SmallButtons"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "Uninstall"
-
-[node name="PlayButton" type="Button" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/LeftSide/Buttons"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Play"
-
-[node name="RightSide" type="VBoxContainer" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Desription" type="Label" parent="VBoxContainer/BodyMargin/LauncherBody/GameBody/XCOM-style Roguelike/RightSide"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-text = "This is a game that is still a work in progress and not ready for play-testing yet.
-
-The title pretty much says everything: It will be a roguelike with a tactical combat system inspired by the XCOM games."
-autowrap_mode = 3
 
 [connection signal="game_installed" from="GamesUpdater" to="." method="_on_games_updater_game_installed"]
 [connection signal="game_uninstalled" from="GamesUpdater" to="." method="_on_games_updater_game_uninstalled"]
