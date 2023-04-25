@@ -3,9 +3,9 @@
 [ext_resource type="FontFile" uid="uid://dcfb6a0jxdi5j" path="res://assets/fonts/aileron/Aileron-SemiBold.otf" id="1_tk5uy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6d0sr"]
-content_margin_left = 20.0
+content_margin_left = 10.0
 content_margin_top = 10.0
-content_margin_right = 20.0
+content_margin_right = 10.0
 content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_color = Color(0.376471, 0.376471, 0.376471, 1)

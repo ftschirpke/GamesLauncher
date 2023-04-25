@@ -72,6 +72,7 @@ script = ExtResource("2_24e5n")
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/Header"]
 layout_mode = 2
+disabled = true
 text = "Settings"
 
 [node name="QuitButton" parent="VBoxContainer/Header" instance=ExtResource("3_038cx")]
