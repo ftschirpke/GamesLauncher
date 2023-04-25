@@ -24,6 +24,9 @@ func _on_draggable_header_gui_input(event: InputEvent) -> void:
         window.position += Vector2i(get_global_mouse_position() - drag_position)
 
 func _ready() -> void:
+    # TODO - launcher settings not implemented yet
+    $VBoxContainer/Header/SettingsButton.disabled = true
+    
     launcher_body.visible = false
     updating_label.visible = true
     

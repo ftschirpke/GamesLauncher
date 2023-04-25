@@ -1,6 +1,18 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://di3mtk41gj5ie"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://di3mtk41gj5ie"]
 
 [ext_resource type="FontFile" uid="uid://dcfb6a0jxdi5j" path="res://assets/fonts/aileron/Aileron-SemiBold.otf" id="1_tk5uy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6d0sr"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.376471, 0.376471, 0.376471, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2kylv"]
 
@@ -77,9 +89,11 @@ anti_aliasing = false
 default_font = ExtResource("1_tk5uy")
 default_font_size = 20
 Button/colors/font_color = Color(0.756863, 0.360784, 0.101961, 1)
+Button/colors/font_disabled_color = Color(0.376471, 0.376471, 0.376471, 1)
 Button/colors/font_focus_color = Color(0.756863, 0.360784, 0.101961, 1)
 Button/colors/font_hover_color = Color(0.756863, 0.360784, 0.101961, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_6d0sr")
 Button/styles/focus = SubResource("StyleBoxEmpty_2kylv")
 Button/styles/hover = SubResource("StyleBoxFlat_c4kfy")
 Button/styles/normal = SubResource("StyleBoxEmpty_waskt")
