@@ -25,8 +25,8 @@ signal cancel_installation(game_name: String)
 @onready var installation_bar: HBoxContainer = $RightSide/InstallationBarContainer
 @onready var installation_progress_bar: ProgressBar = $RightSide/InstallationBarContainer/InstallationProgressBar
 var installing: bool = false
-var exe_done: bool = false
-var pck_done: bool = false
+var exe_progress: int = 0
+var pck_progress: int = 0
 var total_size: float
 var time_since_last_update: float = 0
 
@@ -118,28 +118,15 @@ func _ready() -> void:
         configure()
 
 func get_download_progress() -> float:
-    var sum: float = 0
-    if exe_done:
-        sum += game_config.update_info.exe_size_in_bytes
-    else:
-        var exe_file: FileAccess = FileAccess.open("user://games/%s/%s.tmp" % [game_config.repo_name, game_config.update_info.exe_name], FileAccess.READ)
-        if exe_file:
-            sum += exe_file.get_length()
-            exe_file.close()
-        else:
-            sum += game_config.update_info.exe_size_in_bytes
-            exe_done = true
-    if pck_done:
-        sum += game_config.update_info.pck_size_in_bytes
-    else:
-        var pck_file: FileAccess = FileAccess.open("user://games/%s/%s.tmp" % [game_config.repo_name, game_config.update_info.pck_name], FileAccess.READ)
-        if pck_file:
-            sum += pck_file.get_length()
-            pck_file.close()
-        else:
-            sum += game_config.update_info.pck_size_in_bytes
-            pck_done = true
-    return sum
+    var exe_file: FileAccess = FileAccess.open("user://games/%s/%s.tmp" % [game_config.repo_name, game_config.update_info.exe_name], FileAccess.READ)
+    if exe_file:
+        exe_progress = exe_file.get_length()
+        exe_file.close()
+    var pck_file: FileAccess = FileAccess.open("user://games/%s/%s.tmp" % [game_config.repo_name, game_config.update_info.pck_name], FileAccess.READ)
+    if pck_file:
+        pck_progress = pck_file.get_length()
+        pck_file.close()
+    return exe_progress + pck_progress
 
 func _process(delta: float) -> void:
     if installing:
@@ -152,8 +139,8 @@ func _process(delta: float) -> void:
 func start_installation_bar() -> void:
     installation_bar.visible = true
     total_size = game_config.update_info.exe_size_in_bytes + game_config.update_info.pck_size_in_bytes
-    exe_done = false
-    pck_done = false
+    exe_progress = 0
+    pck_progress = 0
     installing = true
 
 func stop_installation_bar() -> void:
