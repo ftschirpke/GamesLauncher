@@ -163,7 +163,7 @@ func _on_play_button_pressed() -> void:
     OS.execute(game_config.local_state.install_path, [])
 
 func _on_update_button_pressed() -> void:
-#    emit_signal("change_installation_state", game_config.repo_name, true)
+    emit_signal("change_installation_state", game_config.repo_name, true)
     start_installation_bar()
 
 func _on_cancel_installation_button_pressed() -> void:
