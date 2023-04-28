@@ -81,7 +81,6 @@ func _on_get_last_release(result: int, response_code: int, headers: PackedString
 
     var last_release: Dictionary = json[0]
     
-#    var game: GamesManager.Game = games_manager.get_game(game_name)
     game.update_info.latest_version = last_release.get("name", "")
     game.update_info.release_notes = last_release.get("body", "")
     

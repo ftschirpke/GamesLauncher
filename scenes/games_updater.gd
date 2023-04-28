@@ -29,7 +29,7 @@ func _ready() -> void:
     var look_for_updates: bool = start_timestamp - games_manager.last_fetched_timestamp >= TWENTY_MINUTES
 #    look_for_updates = true # TODO - only testing
 
-    if look_for_updates:
+    if look_for_updates or games_manager.games.is_empty():
         create_directory_if_nonexistent("user://", "games")
         find_games()
         games_manager.last_fetched_timestamp = start_timestamp

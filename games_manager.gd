@@ -16,9 +16,7 @@ class Game:
         repo_name = game_name
         settings = GameSettings.new()
         local_state = LocalGameState.new()
-    
-    func _to_string() -> String:
-        return "Game: \"%s\" - is installed: %s" % [repo_name, local_state.installed]
+        update_info = UpdateInfo.new()
 
 class GameSettings:
     pass

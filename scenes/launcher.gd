@@ -44,7 +44,7 @@ func _on_installation_state_change_requested(game_name: String, install: bool) -
 func _on_games_updater_fetched_all_game_versions() -> void:
     for game_name in games_manager.games:
         var game: GamesManager.Game = games_manager.get_game(game_name)
-        var new_tab = game_tab_scene.instantiate()
+        var new_tab: GameTab = game_tab_scene.instantiate() as GameTab
         game_body.add_child(new_tab)
         new_tab.visible = false
         new_tab.game_config = game
